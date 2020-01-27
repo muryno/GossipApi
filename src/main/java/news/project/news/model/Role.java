@@ -9,10 +9,7 @@ import java.util.UUID;
 @Table(name="role")
 public class Role {
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-    @Type(type = "org.hibernate.type.PostgresUUIDType")
-    @Column(name = "id", columnDefinition = "VARCHAR(255)")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(name="rolename")
