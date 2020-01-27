@@ -20,7 +20,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
-
 @RestController
 @RequestMapping("/v1")
 public class AuthorManagement {

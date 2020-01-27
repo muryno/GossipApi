@@ -41,11 +41,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll()
                 .antMatchers("/v1/createauthoraccount**","/v1/authors**","/v1/articles**").permitAll()
-                .antMatchers( "/v1/createarticle**","/v1/articles/{authorId}**","/v1/updatearticle/{id}**","/v1/deletearticle/{id}**").authenticated()
+                .antMatchers( "/v1/createarticle**","/v1/articles/{authorId}**","/v1/updatearticle/{id}**","/v1/deletearticle/{id}**").authenticated();
 
-                .and()
-                .formLogin()
-                .usernameParameter("email").permitAll();
+
 
     }
 
