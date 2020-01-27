@@ -28,37 +28,42 @@ public class AuthorManagement {
     private AuthorService authorService;
 
 
-    @PostMapping("/createauthoraccount")
+
+    @RequestMapping(value = "/createauthoraccount", method = RequestMethod.POST, produces = {"application/json", "application/xml"})
     public Author createAuthorAccount(@Valid @RequestBody CreateAuthorAccountDTO authorAccountDTO) {
         Author createAuthorAccount = authorService.createAuthorAccount(authorAccountDTO);
         return createAuthorAccount;
     }
-    @GetMapping("/authors")
+
+    @RequestMapping(value = "/authors", method = RequestMethod.GET, produces = {"application/json", "application/xml"})
     public ResponseEntity<List<AuthorResponseDTO>> fetchAuthors(@PageableDefault(value = 20) Pageable pageable) {
         ResponseEntity<List<AuthorResponseDTO>> fetchAuthors = authorService.fetchAuthors(pageable);
         return fetchAuthors;
     }
 
-    @PostMapping("/createarticle")
+    @RequestMapping(value = "/createarticle", method = RequestMethod.POST, produces = {"application/json", "application/xml"})
     @PreAuthorize("hasAuthority('AUTHOR')")
     public Article createNewArticle(@Valid @RequestBody CreateArticleDTO articleDTO, final OAuth2Authentication authentication) {
         Article createArticle = authorService.createArticle(articleDTO, authentication);
         return createArticle;
     }
     @GetMapping("/articles")
+    @RequestMapping(value = "/articles", method = RequestMethod.GET, produces = {"application/json", "application/xml"})
     public ResponseEntity<List<ArticleResponseDTO>> getAllArticles(@PageableDefault(value = 20) Pageable pageable) {
         ResponseEntity<List<ArticleResponseDTO>> getAllArticles = authorService.getAllArticles(pageable);
         return getAllArticles;
     }
 
-    @GetMapping("/articles/{authorId}")
+
+    @RequestMapping(value = "/articles/{authorId}", method = RequestMethod.GET, produces = {"application/json", "application/xml"})
     @PreAuthorize("hasAuthority('AUTHOR')")
     public ResponseEntity<List<ArticleResponseDTO>> fetchArticles(@PageableDefault(value = 20) Pageable pageable, @PathVariable(value = "authorId") UUID authorId) {
         ResponseEntity<List<ArticleResponseDTO>> fetchArticles = authorService.fetchArticles(pageable, authorId);
         return fetchArticles;
     }
 
-    @PutMapping("/updatearticle/{id}")
+
+    @RequestMapping(value = "/authors", method = RequestMethod.PUT, produces = {"application/json", "application/xml"})
     @PreAuthorize("hasAuthority('AUTHOR')")
     public ResponseEntity<Article> updateArticle(@PathVariable(value = "id") UUID articleId,
                                          @RequestBody CreateArticleDTO createArticleDTO) {
@@ -67,7 +72,8 @@ public class AuthorManagement {
 
     }
 
-    @DeleteMapping("/deletearticle/{id}")
+
+    @RequestMapping(value = "/deletearticle/{id}", method = RequestMethod.DELETE, produces = {"application/json", "application/xml"})
     @PreAuthorize("hasAuthority('AUTHOR')")
     public ResponseEntity<Article> deleteArticle(@PathVariable(value = "id") UUID articleId){
         ResponseEntity<Article> deletedArticle =authorService.deleteArticle(articleId);
