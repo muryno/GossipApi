@@ -26,8 +26,10 @@ public class PersistConfiguration{
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setUsername("postgres");
+        dataSource.setPassword("@+!Harbeola1");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/amebo?createDatabaseIfNotExist=true");
         return dataSource;
+
     }
 
 

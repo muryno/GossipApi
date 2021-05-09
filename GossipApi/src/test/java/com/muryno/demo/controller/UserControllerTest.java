@@ -20,7 +20,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
@@ -39,12 +41,7 @@ class UserControllerTest {
 
     @BeforeEach
     void setUp() {
-//        myUser = new Users();
-//        myUser.setUserName("@Ade");
-//        myUser.setFirstName("Ogun");
-//        myUser.setPassword("1234");
-//        myUser.setDateReg(Date.from(Instant.now()));
-//        myUser.setLastname("Yemi");
+       // creatUser();
     }
 
     @DisplayName("create adding new users ")
@@ -62,6 +59,23 @@ class UserControllerTest {
         // Assert the response
         Assertions.assertNotNull(returnedWidget, "The saved widget should not be null");
         Assertions.assertEquals("Ade", returnedWidget.getFirstName(), "The version should be incremented");
+    }
 
+
+
+    @Test
+    @DisplayName("Test findAll")
+    void testFindUser() {
+        // Setup our mock repository
+//        Users  myUser = new Users("Ade","Yemi","@Ade","123456");
+//
+//        Users  myUser2 = new Users("Ade","Yemi","@ogun","123456");
+//        doReturn(Arrays.asList(myUser, myUser2)).when(userRepository).findAll();
+
+        // Execute the service call
+        List<Users> widgets = userRepository.findAll();
+
+        // Assert the response
+        Assertions.assertNotEquals(3, widgets.size(), "findAll should return 2 widgets");
     }
 }
