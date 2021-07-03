@@ -10,6 +10,7 @@ import java.util.Date;
 @Data
 @Entity
 @RequiredArgsConstructor
+@NoArgsConstructor
 @Table(name = "users")
 public class Users {
 
@@ -28,7 +29,7 @@ public class Users {
     private  String Lastname;
 
     @NonNull
-    @Column(name = "userName")
+    @Column(name = "userName",unique = true)
     private  String UserName;
 
     @NonNull

@@ -26,7 +26,7 @@ public class Tweet {
 
     //unidirectional one on one mapping
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_users_id")
+    @JoinColumn(name = "fk_users_userName")
     private Users users;
 
 

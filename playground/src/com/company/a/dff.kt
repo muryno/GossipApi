@@ -63,3 +63,24 @@
 //    return minmum
 //
 //}
+
+
+fun minStart(arr: Array<Int>): Long {
+    // Write your code here
+    var i: Int
+    val n: Int = arr.size / arr[0]
+
+    var min: Long = 10000001
+    var sum: Long = 0
+
+    {
+        i = 0
+        while (i < n) {
+            sum = sum + arr[i]
+            if (sum < min) min = sum
+            i++
+        }
+    }
+    return min * -1 + 1
+    return min * -1 + 1
+}

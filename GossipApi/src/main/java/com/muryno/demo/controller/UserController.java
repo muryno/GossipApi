@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Slf4j
-@RequestMapping(name = "api/v1/user")
+@RequestMapping(name = "api/v1/user/")
 public class UserController {
 
 
@@ -24,8 +24,10 @@ public class UserController {
 
 
 
+
+
     @PostMapping
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "add")
     public Users creatUser(@RequestBody Users user){
         return   userRepository.saveAndFlush(user);
     }
